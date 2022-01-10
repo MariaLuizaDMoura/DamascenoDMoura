@@ -1,0 +1,344 @@
+#include <stdio.h> /*Arquivo de cabeçalho que contém as funções printf() e scanf() */
+#include<locale.h> /*Arquivo de cabeçalho que contém a função setlocale que serve
+para mostrar na tela os caracteres da língua Portuguesa como á, â ,ç,etc. */
+#include<math.h> /*Fornece um conjunto de funções para operações matemáticas,
+ tais como funções trigonométricas, hiperbólicas, logaritmos, potência*/
+#include <time.h> /*Para gerar informações de tempo*/
+//necessário para usar localtime()
+
+
+/*
+*Academia Accenture
+*PROG002: Desafio Switch Case
+*Data: 05/01/2022
+*Autor:Maria Luiza Moura
+*Função: Menu com 10 opções de codigos.*/
+
+
+// https://en.wikipedia.org/wiki/Order_of_operations
+// https://www.geeksforgeeks.org/c-library-math-h-functions/
+// http://www.cplusplus.com/reference/cmath/
+
+
+
+int main()
+
+{
+
+    setlocale(LC_ALL,"Portuguese");
+    printf("**************************************************|\n");
+    printf("|                   BEM VINDO!                    |\n");
+    printf("| Nome: Maria Luiza Moura                         |\n");
+    printf("| E-mail: malumoura10@gmail.com                   |\n");
+    printf("| Data: 05/01/2022                                |\n");
+    printf("| Descrição: Menu de Opções                       |\n");
+    printf("**************************************************|\n\n");
+    Sleep(3000);
+    system("cls");
+
+    printf("***************************************************\n");
+    printf("|                 MENU DE OPÇÕES                   |\n");
+    printf("***************************************************\n");
+
+    printf("| OPÇÃO 1  - Contador de caracteres                |\n");
+    printf("| OPÇÃO 2  - Conjunto de cálculos                  |\n");
+    printf("| OPÇÃO 3  - Convertendo Fahrenheit para Celsius:  |\n");
+    printf("| OPÇÃO 4  - Calcula o fatorial de um número.      |\n");
+    printf("| OPÇÃO 5  - Vetor de string com 10 números        |\n");
+    printf("| OPÇÃO 6  - Tabuada com Matriz                    |\n");
+    printf("| OPÇÃO 7  - Matriz [5][3]                         |\n");
+    printf("| OPÇÃO 8  - Contador Regressivo(100-1)            |\n");
+    printf("| OPÇÃO 9  - Caracteres Modificados                |\n");
+    printf("| OPÇÃO 10 - Codigo ASCII                          |\n");
+    printf("| OPÇÃO 'Exit' - Sair do programa                  |\n");
+
+    printf("\n\n Digite uma opção ->\n ");
+
+
+    int escolha=0;
+    scanf("%d",&escolha);
+
+    setbuf (stdin, NULL);
+    switch(escolha)
+    {
+    case 1:
+        printf("1 - Contador de caracteres\n");
+        {
+
+            char nome [50];
+            int contaNome = 0;
+            char idade[2];
+            int contaIdade = 0;
+            int dia = 0;
+            int mes = 0;
+            int ano = 0;
+            {
+                printf("\nDigite seu nome:  ");
+                scanf("%s", nome);
+// Com essas funções é possível digitar frases inteiras com espaços até o limite de 50 caracteres.
+
+                printf("Digite uma data no formato dd/mm/aaaa: ");
+                // Isso separa o scan ex 20/06/1996
+                scanf("%i/%i/%i", &dia, &mes, &ano);;
+            }
+
+            while (nome[contaNome] != '\0')
+            {
+                contaNome++;
+            }
+
+
+
+            {
+                printf("Digite sua idade:  ");
+                scanf("%s", idade);
+
+            }
+            while (idade[contaIdade] != '\0')
+            {
+                contaIdade++;
+            }
+            printf("\nO nome digitado foi %s com %i caracteres \n", nome, contaNome);
+            printf("Sua idade é %s com %i caracteres  \n", idade, contaIdade);
+            printf("O número de caracteres total é %i: \n", contaNome + contaIdade);
+
+            return 0;
+        }
+        system("pause"); //pausar antes de iniciar uma nova entrada no while
+        system("cls");// limpar a tela a cada nova execução do while
+        op = '0';
+        break;
+
+    case 2:
+        printf("2 - Conjunto de cálculos");  // opção de entrada no processo de dois numeros
+        {
+            double a= 0;
+            double b= 0;
+
+            printf("\nPrimeiro número: \n");
+            scanf("%lf",&a);
+            printf("Segundo número: \n");
+            scanf("%lf",&b);
+
+            int calcula = a+b;
+            printf("(a) A soma dos números: %d\n", calcula);
+
+            calcula = a*pow(b,2);  /* pow()=potência*/
+            printf("(b) O produto do primeiro número pelo quadrado do segundo: %d\n", calcula);
+
+            calcula = pow(a,2);
+            printf("(c) O quadrado do primeiro número: %d\n", calcula);
+
+            calcula = sqrt(pow(a,2)+pow(b,2));
+            printf("(d) A raiz quadrada da soma dos quadrados: %d\n", calcula);
+
+            float senoA = sin(a);
+            float senoB = sin(b);
+
+            calcula =  senoA != senoB; /* = sen a?cosb - sen b?cosa*/
+            printf("(e) O seno da diferença do primeiro número pelo segundo %2f \n",calcula);
+
+            calcula = fabs(a); /* pow()=potência*/
+            printf("(f) O módulo do primeiro número %lf\n", calcula);
+
+            return 0;
+            system("pause"); //pausar antes de iniciar uma nova entrada no while
+            system("cls");// limpar a tela a cada nova execução do while
+        }
+        break;
+
+    case 3:
+        printf("3 - Convertendo Fahrenheit para Celsius:\n");
+        {
+
+            int Conversao_int,F;
+            float Conversao_double;
+
+            printf("Entre com um valor em graus Fahrenheit:\n\n");
+            scanf("%d",&F); /*O '&' é uma  indireção*/
+
+            printf("%d ° Fahrenheit para Celsius:\n",F);
+            printf("\nO resultado da conversão é: %.2f\n",(F-32.0) * (5.0/9.0),"°C");
+
+            return(0);
+        }
+        system("pause"); //pausar antes de iniciar uma nova entrada no while
+        system("cls");// limpar a tela a cada nova execução do while
+        break;
+    case 4:
+        printf("4 - Calcula o fatorial de um número. \n");
+        {
+            int fatorial = 1, numero;
+            printf("Digite um numero: ");
+            scanf("%d", &numero);
+
+            for (int i = numero; i >= 1; i--)
+            {
+                fatorial *= i;
+            }
+            printf("O fatorial de %d é %d", numero, fatorial);
+            return 0;
+        }
+        system("pause"); //pausar antes de iniciar uma nova entrada no while
+        system("cls");// limpar a tela a cada nova execução do while
+        break;
+        system("pause"); //pausar antes de iniciar uma nova entrada no while
+        system("cls");// limpar a tela a cada nova execução do while
+    case 5:
+        printf("5 - Vetor de string com 10 números");
+        break;
+        system("pause"); //pausar antes de iniciar uma nova entrada no while
+        system("cls");// limpar a tela a cada nova execução do while
+    case 6:
+        printf("6 - Tabuada de 1 a 10, (- 5° tabuada)");
+        {
+
+
+            int i;
+            int j;
+
+            for (i=1; i <= 10; i++)
+            {
+                if(i==5)
+                {
+                    continue;
+                }
+                for(j=1; j<=10; j++)
+                {
+                    printf("\n %d x %d = %d \n ", i,j,i*j);
+                }
+                printf("\n");
+            }
+            system("pause"); //pausar antes de iniciar uma nova entrada no while
+            system("cls");// limpar a tela a cada nova execução do while
+        }
+        break;
+    case 7:
+        printf("7 - Matriz [5][3]");
+
+
+        break;
+    case 8:
+        printf("8 - Contador Regressivo\n");
+        {
+            int i;
+            for (i=100; i>0; i=i-1)
+                printf("%d ", i);
+        }
+        break;
+    case 9:
+        printf("9  - Caracteres Modificados");
+        {
+
+            char frase[50];
+            int cont = 0;
+
+            printf("Digite uma frase: ");
+            scanf("%[^\n]",frase);
+
+            //Aproveite e faça tudo em um único loop
+            for(int i=0; frase[i] != '\0'; i++)
+            {
+                if(frase[i] == 'a' || frase[i] == 'A')
+                {
+                    frase[i] = 'b';
+                    cont++;
+                }
+            }
+            printf("Frase modificada: %s\nQuantidade de modificacoes: %d",frase,cont);
+
+            fflush(stdin); //limpa o buffer do teclado
+            getchar();
+        }
+
+        break;
+    case 10:
+        printf("Codigo ASCII \n");
+        {
+            char letra;
+            printf("\nDigite um caractere: ");
+            scanf("%c",&letra);
+            printf("\nCaractere digitado: %c, codigo ASCII: %d", letra, letra);
+            return 0;
+
+            /*%c para imprimir o caractere como caractere
+             %d para imprimir o código ASCII do caractere (número inteiro).*/
+        }
+        break;
+
+    case 'Exit':
+    {
+
+    }
+
+    default:
+        system("cls"); //Limpando a tela
+        printf("Você pediu para sair, fechando programa...\n");
+
+        int variavel_contador=10;
+        while(variavel_contador>=0)
+        {
+            printf("%d\n",variavel_contador);
+            variavel_contador=(variavel_contador-1),Sleep(1000);// Aqui ele dorme por 10 segundos depois continua o código
+        }
+
+        printf("FIM!");
+        exit(0);
+    }
+
+    return(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  char primeiroNome[10];
+  char sobrenome[10];
+  int anoNascimento;
+  int quantidadeCaracteres;
+  int tamanho;
+  int idade;
+  int ANO_ATUAL = 2021;
+
+  printf ("\n Digite o seu nome: ");
+  scanf ("%s", &primeiroNome);
+  printf ("\n Digite o seu sobrenome: ");
+  scanf ("%s", &sobrenome);
+  printf ("\n Digite o ano que vocC* nasceu: ");
+  scanf ("%i", &anoNascimento);
+  printf ("\n");
+
+  printf ("Seu nome completo C): %s %s \n", primeiroNome, sobrenome);
+
+  idade = ANO_ATUAL - anoNascimento;
+  printf ("Sua idade C) %i \n", idade);
+
+  strcat (primeiroNome, sobrenome);
+  tamanho = strlen (primeiroNome);
+  printf
+    ("A soma da sua idade mais a quantidade de caracteres do seu nome C): %i \n",
+     tamanho + idade);
+}
